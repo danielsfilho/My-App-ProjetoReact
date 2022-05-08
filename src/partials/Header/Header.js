@@ -25,7 +25,7 @@ import useStyles from './Header.style'
 
 
 
-const Header = () => {
+const Header = ({ user }) => {
     const classes = useStyles()
     const history = useHistory()
 
@@ -50,7 +50,11 @@ const Header = () => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} className={classes.title}>
                     My App
                 </Typography>
-                <Button color="inherit">Login</Button>
+                {
+                    user.logged
+                    ?   <Typography variant="h6">{user.email}</Typography>
+                    :   <Button color="inherit">Login</Button>
+                }
                 </Toolbar>
                 <Drawer open={menuOpen} onClose={() => handleToggleMenu()}>
                     <List>
